@@ -1,0 +1,38 @@
+﻿오후 12:48 2019-07-09
+
+
+자바
+
+1. setup
+2. 변수, 연산자, 조건문, 반복
+3. class, object
+   생성자, 파괴자, 메소드, 접근자
+4. 상속 extends
+5. interface implements - common
+6. 예외처리 try catch
+7. API
+8. Thread - os 병행처리, 동기화 public void run()
+9. 제네릭 type
+10. 람다식 - 익명 메소드
+11. File IOstream
+12. GUI
+   	- AWT(추상 윈도우 도구) java.awt.*
+    	- Swing		    jave.swing.*
+	- JavaFx
+	- Spring
+13. Networking
+	- tcp/ip...socket
+14. DB connection
+
+
+homework/숙제
+
+os   db   ic   cs  sys
+ave
+ave >= 60  certi pass!!
+ave < 60   certi nonpass
+5과목 중 < 50  drop "과락" 
+
+1) main 함수에서만
+2) 생성자 & 메소드
+3) field & 생성자
