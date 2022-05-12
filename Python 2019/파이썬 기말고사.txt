@@ -1,0 +1,48 @@
+프로그래밍실습 기말과제
+
+※ 다음 과제 중 택일해서 프로그래밍하세요
+
+1) 주사위 1개 먼저 세계를 일주하는 블루마블 게임
+   - 배경 화면 작성
+   - 위치 표시
+   - 승자 표시 
+   - 기타 룰 적용은 각자가 알아서
+
+2) 윷놀이
+   - 윷판 배경 화면 
+   - 말들 표시
+   - 기타 룰 적용은 알아서
+
+3) 메뉴를 사용한 2학기 교육 내용 통합판 응용 프로그램
+   아래 소스 참고
+
+from tkinter import *
+from tkinter.simpledialog import *
+from img_slide import *
+from sort import *
+from fileinput import *
+window = Tk()
+window.geometry("600x600")
+
+def checkopen():
+    messagebox.showinfo("메뉴 선택","열기 메뉴를 선택함")
+
+def checkclose():
+    window.quit()
+    window.destroy()
+
+mainMenu = Menu(window)
+window.config(menu=mainMenu)
+
+fileMenu = Menu(mainMenu)
+mainMenu.add_cascade(label="파일",menu=fileMenu)
+fileMenu.add_command(label="열기",command = checkopen)
+fileMenu.add_separator()
+fileMenu.add_command(label="종료",command = checkclose)
+
+fileMenu = Menu(mainMenu)
+mainMenu.add_cascade(label="연습",menu=fileMenu)
+fileMenu.add_command(label="이미지슬라이드",command = imgrandom)
+fileMenu.add_command(label="bubblesort,출력",command = bubbles)
+
+window.mainloop()
