@@ -1,44 +1,56 @@
-/* 20220509 ë¶€í„° ë§Œë“¤ê¸° ì‹œì‘í•œ ììœ¨ ê³¼ì œì…ë‹ˆë‹¤.
- * í‰ë©´ ìœ„ì— Nê°œì˜ ì§ì‚¬ê°í˜•ì´ ë†“ì—¬ìˆê³ , ì§ì‚¬ê°í˜€ì˜ ê° ë³€ì€ xì¶•, yì¶•ì— í‰í–‰í•˜ë‹¤.(ì§ì‚¬ê°í˜• ì´ì™¸ì˜ ì‚¬ê°í˜•ì€ ì—†ë‹¤.)
- * ê°ê°ì˜ ì§ì‚¬ê°í˜•ì€ ì™¼ìª½ ì•„ë˜ ì¢Œí‘œ(x1, y1)ê³¼ ì˜¤ë¥¸ìª½ ìœ„ ì¢Œí‘œ(x2, y2)ë¥¼ ê°€ì§€ë©°, (x1, y1, x2, y2)ë¡œ ë‚˜íƒ€ë‚¸ë‹¤.
- * ê° ì§ì‚¬ê°í˜•ì€ ì„œë¡œ ê²¹ì³ìˆì„ ìˆ˜ ìˆì„ ë•Œ ì§ì‚¬ê°í˜•ë“¤ì´ ì°¨ì§€í•˜ëŠ” ë©´ì ì˜ ì´í•©ì„ êµ¬í•˜ë¼
- * ì œí•œ ì¡°ê±´
- * ì§ì‚¬ê°í˜•ì˜ N : 1 <= N <= 100000
- * ì§ì‚¬ê°í˜•ì˜ ì¢Œí‘œ x1 >= 0, y1 >= 0, x2 <= 109, y2 <= 109 
+/* 20220509 ºÎÅÍ ¸¸µé±â ½ÃÀÛÇÑ ÀÚÀ² °úÁ¦ÀÔ´Ï´Ù.
+ * Æò¸é À§¿¡ N°³ÀÇ Á÷»ç°¢ÇüÀÌ ³õ¿©ÀÖ°í, Á÷»ç°¢ÇôÀÇ °¢ º¯Àº xÃà, yÃà¿¡ ÆòÇàÇÏ´Ù.(Á÷»ç°¢Çü ÀÌ¿ÜÀÇ »ç°¢ÇüÀº ¾ø´Ù.)
+ * °¢°¢ÀÇ Á÷»ç°¢ÇüÀº ¿ŞÂÊ ¾Æ·¡ ÁÂÇ¥(x1, y1)°ú ¿À¸¥ÂÊ À§ ÁÂÇ¥(x2, y2)¸¦ °¡Áö¸ç, (x1, y1, x2, y2)·Î ³ªÅ¸³½´Ù.
+ * °¢ Á÷»ç°¢ÇüÀº ¼­·Î °ãÃÄÀÖÀ» ¼ö ÀÖÀ» ¶§ Á÷»ç°¢ÇüµéÀÌ Â÷ÁöÇÏ´Â ¸éÀûÀÇ ÃÑÇÕÀ» ±¸ÇÏ¶ó
+ * Á¦ÇÑ Á¶°Ç
+ * Á÷»ç°¢ÇüÀÇ N : 1 <= N <= 100000
+ * Á÷»ç°¢ÇüÀÇ ÁÂÇ¥ x1 >= 0, y1 >= 0, x2 <= 109, y2 <= 109 
  */
 package rectangle_area;
 
+import java.awt.Color;
 import java.util.Scanner;
 
 public class Main {
 	
-	/* ì²« ê¼­ì§€ì ì—ì„œ ë ê¼­ì§€ì ê¹Œì§€ ìˆœí™˜ë¬¸ì„ ëŒë©´ì„œ boolean ë°°ì—´ì— true ê°’ì„ ë„£ì–´ì¤€ë‹¤.
-	 * ê²¹ì¹˜ëŠ” ë¶€ë¶„ì€ ì–´ì°¨í”¼ trueì´ê¸° ë•Œë¬¸ì— ì¤‘ë³µì´ ë°œìƒí•˜ì§€ ì•ŠëŠ”ë‹¤.	
-	 * 	ìµœì¢…ì ìœ¼ë¡œ trueì¸ ê°’ì˜ ê°¯ìˆ˜ë¥¼ ìƒˆì–´ì¤€ë‹¤. 
-	 */
-	public static void main(String[] args){
-		Scanner sc = new Scanner(System.in);
-
-		boolean[][] arr = new boolean[110][110];
-		// ì „ì²´ ì¢Œí‘œ í¬ê¸°ì˜ ë°°ì—´
-
-		int x1, y1, x2, y2;		// ì§ì‚¬ê°í˜• ì¢Œí‘œ
-		int N = 0;			// ì§ì‚¬ê°í˜• ê°¯ìˆ˜
-		int total = 0;
-
+	static Scanner sc = new Scanner(System.in);
+	static private String Jul = "¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡";
+	
+	// Á÷»ç°¢ÇüÀÇ °¹¼ö¸¦ ÀÔ·Â¹Ş´Â ÇÔ¼ö
+	public int square_input() {
+		int N = 0;				// Á÷»ç°¢Çü °¹¼ö
 		while (true) {
-			System.out.print("ì§ì‚¬ê°í˜•ì˜ ê°¯ìˆ˜ :");
+			System.out.println(Jul);
+			System.out.print(" Á÷»ç°¢ÇüÀÇ °¹¼ö :");
 			N = sc.nextInt();
-			// ì§ì‚¬ê°í˜• ê°¯ìˆ˜
-			if(N > 0 && N <= 10000)	break;
-			// Nì€ 0ë³´ë‹¤ í¬ë‹¤ ê·¸ë¦¬ê³  Nì€ 1ë§Œ ë³´ë‹¤ ê°™ê±°ë‚˜ ì‘ë‹¤.
-			System.out.println("ì§ì‚¬ê°í˜• ê°¯ìˆ˜ì˜ ì…ë ¥ë²”ìœ„ëŠ” 1~100000 ì…ë‹ˆë‹¤.");
-			// ì§ì‚¬ê°í˜• ê°¯ìˆ˜ì˜ ì œí•œì— ë§ì§€ ì•Šìœ¼ë©´ ë‹¤ì‹œ ì…ë ¥í•©ë‹ˆë‹¤.
+			// Á÷»ç°¢Çü ÀÔ·Â Á¦ÇÑ °¹¼ö
+			if(N > 0 && N <= 10000)	break; 
+			System.out.println("Á÷»ç°¢Çü °¹¼öÀÇ ÀÔ·Â¹üÀ§´Â 1~100000 ÀÔ´Ï´Ù.");
+			// Á÷»ç°¢Çü °¹¼öÀÇ Á¦ÇÑ¿¡ ¸ÂÁö ¾ÊÀ¸¸é ´Ù½Ã ÀÔ·ÂÇÕ´Ï´Ù.
 		}
-			
-	        for(int i=0; i<N; i++){
-		// ë°›ì€ ì§ì‚¬ê°í˜•ì˜ ê°¯ìˆ˜ë§Œí¼ ë°˜ë³µí•©ë‹ˆë‹¤.
-		    System.out.print("X1 :");
+		return N;
+	}
+	
+	// Á÷»ç°¢ÇüÀÇ ÁÂÇ¥¸¦ ÀÔ·Â¹Ş¾Æ¼­ ÁøÇàÇÏ´Â ÇÔ¼ö
+	public void rectangle_array(int N,int mode,int num) {	// (»ç°¢ÇüÀÇ °¹¼ö, ¼öµ¿°ú ÀÚµ¿ÀÇ ±¸º°ÇÏ´Â º¯¼ö,¹è¿­ Ã³¸® ±¸º° º¯¼ö)
+		
+		/* Ã¹ ²ÀÁöÁ¡¿¡¼­ ³¡ ²ÀÁöÁ¡±îÁö ¼øÈ¯¹®À» µ¹¸é¼­ boolean ¹è¿­¿¡ true °ªÀ» ³Ö¾îÁØ´Ù.
+		 * °ãÄ¡´Â ºÎºĞÀº ¾îÂ÷ÇÇ trueÀÌ±â ¶§¹®¿¡ Áßº¹ÀÌ ¹ß»ıÇÏÁö ¾Ê´Â´Ù.	
+		 * 	ÃÖÁ¾ÀûÀ¸·Î trueÀÎ °ªÀÇ °¹¼ö¸¦ »õ¾îÁØ´Ù. 
+		 */
+		// ÀüÃ¼ ÁÂÇ¥ Å©±âÀÇ ¹è¿­
+		boolean[][] arr_bool = new boolean[110][110];
+		int[][] arr_int = new int[110][110];
+		
+		
+		int x1=0, y1=0, x2=0, y2=0;		// Á÷»ç°¢Çü ÁÂÇ¥
+		int total = 0;			// Á÷»ç°¢Çü ³ĞÀÌ º¯¼ö
+		int temp = 0;			// ÀÓ½Ã º¯¼ö
+		
+		 for(int i=0; i<N; i++){		// ¹ŞÀº Á÷»ç°¢ÇüÀÇ °¹¼ö¸¸Å­ ¹İº¹ÇÕ´Ï´Ù.
+			// ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡ ¹ŞÀº mode °ª¿¡ µû¶ó Ã³¸® ºÎºĞ ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
+			if (mode == 1 || mode == 3) {			// ¼öµ¿ = manual
+	        	System.out.print("X1 :");
 	            x1 = sc.nextInt();
 	            System.out.print("Y1 :");
 	            y1 = sc.nextInt();
@@ -46,30 +58,162 @@ public class Main {
 	            x2 = sc.nextInt();
 	            System.out.print("Y2 :");
 	            y2 = sc.nextInt();
-	            System.out.println("â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€");
-	            // ì§ì‚¬ê°í˜•ì˜ ì¢Œí‘œë¥¼ ë°›ì•„ ì „ì²´ í¬ê¸°ì˜ ë°°ì—´ì— trueê°’ì„ ì±„ì›ë‹ˆë‹¤.
-	            
-	            for(int j = y1; j<y2; j++){
-	            // y1 ë¶€í„° y2ê¹Œì§€ trueê°’ì„ ì±„ì›ë‹ˆë‹¤.
-	                for(int k = x1; k<x2; k++){
-	                // x1 ë¶€í„° x2ê¹Œì§€ trueê°’ì„ ì±„ì›ë‹ˆë‹¤.
-	                    arr[j][k] = true;
-	                }
-	            }
-	            // forë¬¸ì„ ì´ìš©í•˜ì—¬ ì „ì²´ì¢Œí‘œë°°ì—´ì— í˜„ì¬ ë°›ì€ ì§ì‚¬ê°í˜•ì˜ ì¢Œí‘œë¥¼ trueë¡œ í‘œì‹œí•©ë‹ˆë‹¤. 
-	            // ë§Œì•½ ì¢Œí‘œê°’ì´ ê²¹ì¹œë‹¤í•´ë„ ì´ë¯¸ ê·¸ ìë¦¬ëŠ” true ê°’ìœ¼ë¡œ í‘œì‹œë˜ì–´ ìˆì–´ ì¤‘ë³µë˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
+	            System.out.println(Jul);
+	            // Á÷»ç°¢ÇüÀÇ ÁÂÇ¥¸¦ ¹Ş¾Æ ÀüÃ¼ Å©±âÀÇ ¹è¿­¿¡ true°ªÀ» Ã¤¿ó´Ï´Ù.
+		        
+			} else if (mode == 2 || mode == 4) {		// ÀÚµ¿ = automatic
+				if (i <= 1) {
+					x1 = (int)(Math.random()*10);
+					y1 = (int)(Math.random()*10);
+					x2 = (int)(Math.random()*10+10);
+					y2 = (int)(Math.random()*10+10);
+				} else if (i <= 3) {
+					x1 = (int)(Math.random()*10+30);
+					y1 = (int)(Math.random()*10+30);
+					x2 = (int)(Math.random()*10+45);
+					y2 = (int)(Math.random()*10+45);
+				} else if (i <= 5) {
+					x1 = (int)(Math.random()*10+10);
+					y1 = (int)(Math.random()*10+30);
+					x2 = (int)(Math.random()*10+50);
+					y2 = (int)(Math.random()*10+70);
+				} else if (i <= 7) {
+					x1 = (int)(Math.random()*20+80);
+					y1 = (int)(Math.random()*10+30);
+					x2 = (int)(Math.random()*10+45);
+					y2 = (int)(Math.random()*10+45);
+				}  else if (i >= 10) {
+					x1 = (int)(Math.random()*70);
+					y1 = (int)(Math.random()*70);
+					x2 = (int)(Math.random()*50+60);
+					y2 = (int)(Math.random()*50+60);
+				}
+			} else {
+				System.out.println(" MODE ERROR");
+			}
+			
+			// x1, x2 ¿Í y1, y2ÀÇ Å©±â Ã¼Å©
+			if (x1 > x2) {
+				temp = x2;
+				x2 = x1;
+				x1 = temp;
+			}
+			if (y1 > y2) {
+				temp = y2;
+				y2 = y1;
+				y1 = temp;
+			}
+			
+			
+			// ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡ boolean Ã³¸® ºÎºĞ ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
+			if (num == 1) {
+				 for(int j = y1;j<y2; j++){
+		        // y1 ºÎÅÍ y2±îÁö true°ªÀ» Ã¤¿ó´Ï´Ù.
+		            for(int k = x1;k<x2; k++){
+		            // x1 ºÎÅÍ x2±îÁö true°ªÀ» Ã¤¿ó´Ï´Ù.
+		                arr_bool[j][k] = true;
+		            }
+		        }
+		        // for¹®À» ÀÌ¿ëÇÏ¿© ÀüÃ¼ÁÂÇ¥¹è¿­¿¡ ÇöÀç ¹ŞÀº Á÷»ç°¢ÇüÀÇ ÁÂÇ¥¸¦ true·Î Ç¥½ÃÇÕ´Ï´Ù. 
+		        // ¸¸¾à ÁÂÇ¥°ªÀÌ °ãÄ£´ÙÇØµµ ÀÌ¹Ì ±× ÀÚ¸®´Â true °ªÀ¸·Î Ç¥½ÃµÇ¾î ÀÖ¾î Áßº¹µÇÁö ¾Ê½À´Ï´Ù.
+		 
+		        for(int j = 0; j<110; j++){
+		        	for(int k = 0; k<110; k++){
+		        	// ÀüÃ¼ ÁÂÇ¥ ¹è¿­À» ÀĞ¾î¼­ true°ª => Á÷»ç°¢ÇüÀÇ °ãÄ§°ú »ó°ü¾øÀÌ ÀüÃ¼ ³ĞÀÌ¸¦ ±¸ÇÕ´Ï´Ù.
+		        		if(arr_bool[j][k]==true)
+		        			total++;
+		            }
+		        }
+		    // ¡è boolean ¹è¿­ Ã³¸®
+		    // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡ int Ã³¸® ºÎºĞ ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
+	        } else if (num == 2) {
+	        	for(int j = y1;j<y2;j++) {
+	        		for(int k = x1;k<x2; k++){
+	        			// ¹ŞÀº ÁÂÇ¥ÀÇ ¹è¿­¿¡ +1¾¿ ´õÇÕ´Ï´Ù.
+	        			arr_int[j][k] += 1;
+	        		}
+	        	}
+	        	for(int j = y1;j<y2;j++) {
+	        		for(int k = x1;k<x2; k++){
+	        			if(arr_int[j][k] != 0) 
+	        				total++;
+	        		}
+	        	}
+	        	
+	        	
+	        } else {
+	        	System.out.println(" NUM ERROR");
 	        }
-	 
-	        for(int j = 0; j<110; j++){
-	        	for(int k = 0; k<110; k++){
-	        	// ì „ì²´ ì¢Œí‘œ ë°°ì—´ì„ ì½ì–´ì„œ trueê°’ => ì§ì‚¬ê°í˜•ì˜ ê²¹ì¹¨ê³¼ ìƒê´€ì—†ì´ ì „ì²´ ë„“ì´ë¥¼ êµ¬í•©ë‹ˆë‹¤.
-	        		if(arr[j][k]==true){
-	        			total++;
-	                	}
-	           	}
-	        }
-	 
-	        System.out.println(total);
-	}// static void main
+		}
+        // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡ Ãâ·Â ºÎºĞ ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
+        System.out.println(" Á÷»ç°¢ÇüÀÇ ÃÑ ¸éÀû = "+total);
+        for(int j = 0;j<arr_int[0].length;j--) {
+    		for(int k = 0;k<arr_int.length; k++){
+    			if (arr_int[j][k] == 1) {
+    				System.out.print("¡á");
+    			} else if (arr_int[j][k] == 2) {
+    				System.out.print("¡Ü");
+    			} else if (arr_int[j][k] == 3) {
+    				System.out.print("¡ß");
+    			} else if (arr_int[j][k] == 4) {
+    				System.out.print("¡ã");
+    			} else if (arr_int[j][k] >= 5) {
+    				System.out.print("¡Ú");
+    			} else {
+    				System.out.print("¡à");
+    			}
+    		} 
+    		System.out.println("¡Ù");
+    	}
+        
+	}	// Á÷»ç°¢Çü ³ĞÀÌ¸¦ ±¸ÇÏ´Â ÇÔ¼ö
+
+	public static void main(String[] args){
+		
+		Main ma = new Main();
+		int input = -1;
+		
+		while(true) {
+			System.out.println(Jul);
+			System.out.println(" Á÷»ç°¢Çü ¸éÀû ±¸ÇÏ±â");
+			System.out.println(" 1. ¼öµ¿ÀÔ·Â(boolean)");
+			System.out.println(" 2. ÀÚµ¿ÀÔ·Â(boolean)");
+			System.out.println(" 3. ¼öµ¿ÀÔ·Â(int)");
+			System.out.println(" 4. ÀÚµ¿ÀÔ·Â(int)");
+			System.out.println(" 0. Á¾·á");
+			System.out.println(Jul);
+			input = sc.nextInt();
+			
+			if (input == 1 || input == 2) {
+				ma.rectangle_array(ma.square_input(),input,1);
+				// rectangle_array(Á÷»ç°¢Çü °¹¼ö, boolean¿¡ ¼öµ¿°ú ÀÚµ¿, boolean ¹è¿­ or int ¹è¿­)
+				// (Á÷»ç°¢Çü °¹¼ö, 1 = ¼öµ¿ / 2 = ÀÚµ¿, boolean = 1 / int = 2
+			} else if (input == 3 || input == 4) {
+				ma.rectangle_array(ma.square_input(),input,2);
+			} else if (input == 0) {
+				System.out.println(" ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù.");
+				break;
+			} else {
+				System.out.println(" ¿Ã¹Ù¸¥ °ªÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+			}
+			
+		}	// ¸Ş´º ÀÔ·Â while¹®
+		
+    }// static void main
 
 } // class main
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
