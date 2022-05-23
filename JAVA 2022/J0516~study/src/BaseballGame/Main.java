@@ -190,7 +190,7 @@ public class Main {
 			System.out.println(" ─────────────────");
 			System.out.print("선택하세요 : ");
 			chice = sc.nextInt();
-			if (chice >= 1 && chice <=9) {
+			if (chice >= 0 && chice <=9) {
 				if (chice == 0) {
 					System.out.println("시스템을 종료합니다.");
 					break;
