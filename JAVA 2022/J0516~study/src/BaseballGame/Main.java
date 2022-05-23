@@ -25,6 +25,7 @@ public class Main {
 			key_num[i] = -1;
 	}
 	
+// ──────────────────────────────── 정답 숫자 배열 만들기 ────────────────────────────────
 	// 정답 배열에 정답 숫자를 중복없이 랜덤으로 저장합니다.
 	public void random_num_make(int N) {
 		int size = N;
@@ -43,7 +44,8 @@ public class Main {
 			}	// while 
 		}
 	} 	// random_num_make
-	
+
+// ──────────────────────────────── 메인 게임 부분 ────────────────────────────────
 	// N자리가 정답인 야구게임입니다.
 	public void playgame(int N,int R) {
 		int size = N;						// 정답의 크기
@@ -150,10 +152,10 @@ public class Main {
 						
 			} 	// 입력값에 대한 올바른값의 while
 			if (count_strike == size) {
-				System.out.println("★★★★★★★★★★★★★★★");
+				System.out.println("★★★★★★★★★★★★★★★★★★★★★★★");
 				System.out.println("  정답입니다!!!");
 				System.out.println("  "+i+"회차에서 홈런을 쳤습니다!");
-				System.out.println("★★★★★★★★★★★★★★★");
+				System.out.println("★★★★★★★★★★★★★★★★★★★★★★★");
 				break;
 			}
 		}	// 라운드 for문
