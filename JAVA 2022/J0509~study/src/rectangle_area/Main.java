@@ -145,11 +145,11 @@ public class Main {
 	        	System.out.println(" NUM ERROR");
 	        }
 		}
-        // ──────────────────────────────── 출력 부분 ───────────────────────────────
+        // ──────────────────────────────── 배열 출력 부분 ───────────────────────────────
         System.out.println(" 직사각형의 총 면적 = "+total);
-        for(int j = 0;j<arr_int[0].length;j--) {
+        for(int j = 0;j<arr_int[0].length;j++) {
     		for(int k = 0;k<arr_int.length; k++){
-    			if (arr_int[j][k] == 1) {
+    			if (arr_int[j][k] == 1 || arr_bool[j][k] == true) {
     				System.out.print("■");
     			} else if (arr_int[j][k] == 2) {
     				System.out.print("●");
