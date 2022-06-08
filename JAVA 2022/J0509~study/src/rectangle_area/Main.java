@@ -8,7 +8,6 @@
  */
 package rectangle_area;
 
-import java.awt.Color;
 import java.util.Scanner;
 
 public class Main {
